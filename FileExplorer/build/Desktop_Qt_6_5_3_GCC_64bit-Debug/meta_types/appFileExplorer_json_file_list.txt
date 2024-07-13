@@ -1,2 +1,0 @@
-/home/cashtan/QtProjects/QMLFileExplorer/FileExplorer/build/Desktop_Qt_6_5_3_GCC_64bit-Debug/appFileExplorer_autogen/include/../EWIEGA46WW/moc_PathInfo.cpp.json
-/home/cashtan/QtProjects/QMLFileExplorer/FileExplorer/build/Desktop_Qt_6_5_3_GCC_64bit-Debug/appFileExplorer_autogen/include/../EWIEGA46WW/moc_PathsController.cpp.json

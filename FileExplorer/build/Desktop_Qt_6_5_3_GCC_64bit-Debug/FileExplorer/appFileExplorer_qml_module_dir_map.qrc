@@ -1,6 +1,0 @@
-<RCC>
-  <qresource prefix="/">
-    <file alias="/FileExplorer">/home/cashtan/QtProjects/QMLFileExplorer/FileExplorer/build/Desktop_Qt_6_5_3_GCC_64bit-Debug/FileExplorer</file>
-
-  </qresource>
-</RCC>

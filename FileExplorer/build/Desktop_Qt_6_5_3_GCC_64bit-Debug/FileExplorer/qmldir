@@ -1,6 +1,0 @@
-module FileExplorer
-typeinfo appFileExplorer.qmltypes
-prefer :/FileExplorer/
-Main 1.0 Main.qml
-ShortcutButton 1.0 ShortcutButton.qml
-

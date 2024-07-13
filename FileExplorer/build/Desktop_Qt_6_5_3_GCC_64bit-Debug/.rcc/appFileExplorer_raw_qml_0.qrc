@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="/FileExplorer/">
+    <file alias="Main.qml">/home/cashtan/QtProjects/QMLFileExplorer/FileExplorer/Main.qml</file>
+    <file alias="ShortcutButton.qml">/home/cashtan/QtProjects/QMLFileExplorer/FileExplorer/ShortcutButton.qml</file>
+  </qresource>
+</RCC>
+

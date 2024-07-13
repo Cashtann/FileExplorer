@@ -1,0 +1,63 @@
+{
+    "classes": [
+        {
+            "className": "PathsController",
+            "object": true,
+            "properties": [
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": true,
+                    "index": 0,
+                    "name": "currentDirectory",
+                    "notify": "currentDirectoryChanged",
+                    "read": "currentDirectory",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "QString",
+                    "user": false
+                }
+            ],
+            "qualifiedClassName": "PathsController",
+            "signals": [
+                {
+                    "access": "public",
+                    "name": "currentDirectoryChanged",
+                    "returnType": "void"
+                }
+            ],
+            "slots": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "newPath",
+                            "type": "QString"
+                        }
+                    ],
+                    "name": "changeCurrentDirectory",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "name": "printCurrentDirectory",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "name": "printCurrentSubdirectories",
+                    "returnType": "void"
+                }
+            ],
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "PathsController.h",
+    "outputRevision": 68
+}

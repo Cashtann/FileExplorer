@@ -2,6 +2,7 @@
 #include <filesystem>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 namespace fs = std::filesystem;
 
@@ -37,6 +38,20 @@ std::vector<QString> FileSystem::getSubdirectories(const QString& dir)
             subdirs.emplace_back(QString::fromStdString(entry.path()));
         }
     }
+    std::vector<std::string> temp;
+    temp.reserve(subdirs.size());
+    for (const auto& qString : subdirs)
+    {
+        temp.emplace_back(qString.toStdString());
+    }
+    subdirs.clear();
+    subdirs.reserve(temp.size());
+    std::sort(temp.begin(), temp.end());
+    for (const auto& string : temp)
+    {
+        subdirs.emplace_back(QString::fromStdString(string));
+    }
+
     return subdirs;
 }
 

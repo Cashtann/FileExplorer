@@ -80,6 +80,8 @@ Window {
                 imageSource: "assets/icons/go_previous.png"
 
             }
+            
+            
         }
 
         Rectangle {

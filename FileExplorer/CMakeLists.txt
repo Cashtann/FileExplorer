@@ -21,11 +21,14 @@ qt_add_qml_module(appFileExplorer
         SOURCES PathInfo.h PathInfo.cpp
         SOURCES PathsController.h PathsController.cpp
         QML_FILES ShortcutButton.qml
-        QML_FILES ItemBox.qml
+        QML_FILES ImageButton.qml
         RESOURCES
         assets/icons/app_generic.png
         assets/icons/folder_generic.png
         assets/icons/error.png
+        assets/icons/back_symbol.png
+        assets/icons/next_symbol.png
+        assets/icons/go_previous.png
         SOURCES ShortcutInfo.h ShortcutInfo.cpp
         SOURCES FilesController.h FilesController.cpp
         QML_FILES FilesPanel.qml

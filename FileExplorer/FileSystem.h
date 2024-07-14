@@ -31,6 +31,8 @@ public:
     static PathProperties processPath(const QString& path);
 
     static bool isValidDir(const QString& path);
+
+    static QString gotoParentDirectory(const QString& path);
 };
 
 #endif // FILESYSTEM_H

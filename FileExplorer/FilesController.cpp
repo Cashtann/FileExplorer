@@ -7,7 +7,7 @@
 FilesController::FilesController(QObject *parent)
     : QAbstractListModel{parent}
 {
-    m_currentDirectory = FileSystem::getRootDirectory();
+    setCurrentDirectory(FileSystem::getRootDirectory());
     qDebug() << "Current directory: " << m_currentDirectory;
     addAllCurrentPathItems();
     // QString name = "dupa.png";
@@ -114,17 +114,23 @@ void FilesController::addAllCurrentPathItems()
     }
 }
 
-void FilesController::refreshAllPathItems()
+void FilesController::refreshAllPathItems(const QString& newDir)
 {
-
+    wipeAllPathItems();
+    setCurrentDirectory(newDir);
+    addAllCurrentPathItems();
 }
 
 void FilesController::changeDirectory(const QString &newDir)
 {
     if (FileSystem::isValidDir(newDir))
     {
-        wipeAllPathItems();
-        m_currentDirectory = newDir;
-        addAllCurrentPathItems();
+        refreshAllPathItems(newDir);
     }
+}
+
+void FilesController::goBack()
+{
+    refreshAllPathItems(FileSystem::gotoParentDirectory(m_currentDirectory));
+    emit currentDirectoryChanged();
 }

@@ -1,5 +1,6 @@
 import QtQuick
 import fs.controllers.FilesController
+import fs.controllers.PathsController
 import FileExplorer
 
 Item {
@@ -58,7 +59,7 @@ Item {
         hoverEnabled: true
 
         onClicked: {
-            PathsController.printCurrentSubdirectories()
+            FilesController.goBack()
         }
     }
 }

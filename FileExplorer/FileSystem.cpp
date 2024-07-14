@@ -68,3 +68,9 @@ bool FileSystem::isValidDir(const QString &path)
 {
     return fs::is_directory(fs::path(path.toStdString())) ? true : false;
 }
+
+QString FileSystem::gotoParentDirectory(const QString& path)
+{
+    return QString::fromStdString((std::string)fs::path(path.toStdString()).parent_path());
+
+}

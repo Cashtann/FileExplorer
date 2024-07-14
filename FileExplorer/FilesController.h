@@ -40,8 +40,9 @@ public slots:
                      const bool& isFile);
     void wipeAllPathItems();
     void addAllCurrentPathItems();
-    void refreshAllPathItems();
+    void refreshAllPathItems(const QString& newDir);
     void changeDirectory(const QString& newDir);
+    void goBack();
 
 signals:
 

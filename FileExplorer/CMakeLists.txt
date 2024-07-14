@@ -19,7 +19,7 @@ qt_add_qml_module(appFileExplorer
         Main.qml
         SOURCES FileSystem.h FileSystem.cpp
         SOURCES PathInfo.h PathInfo.cpp
-        SOURCES PathsController.h PathsController.cpp
+        SOURCES
         QML_FILES ShortcutButton.qml
         QML_FILES ImageButton.qml
         RESOURCES

@@ -1,5 +1,4 @@
 import QtQuick
-import fs.controllers.PathsController
 
 Item {
     id: root
@@ -50,7 +49,7 @@ Item {
         hoverEnabled: true
 
         onClicked: {
-            PathsController.printCurrentSubdirectories()
+
         }
     }
 }

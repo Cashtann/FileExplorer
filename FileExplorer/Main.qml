@@ -1,6 +1,5 @@
 import QtQuick
 import QtQuick.Layouts
-import fs.controllers.PathsController
 import fs.controllers.FilesController
 import FileExplorer
 

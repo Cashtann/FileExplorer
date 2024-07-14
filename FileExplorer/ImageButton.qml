@@ -1,6 +1,5 @@
 import QtQuick
 import fs.controllers.FilesController
-import fs.controllers.PathsController
 import FileExplorer
 
 Item {

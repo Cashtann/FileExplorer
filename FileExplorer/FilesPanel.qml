@@ -1,6 +1,5 @@
 import QtQuick
 import fs.controllers.FilesController
-import fs.controllers.PathsController
 import FileExplorer
 
 Item {
@@ -101,7 +100,6 @@ Item {
 
                 onClicked: {
                     if (delegate.pathItemIsDirectory){
-                        //PathsController.printCurrentSubdirectories()
                         FilesController.changeDirectory(delegate.pathItemPath);
                     }
                 }

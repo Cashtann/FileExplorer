@@ -21,9 +21,9 @@ QUrl PathInfo::imageSource() const
 }
 
 
-bool PathInfo::isFile() const
+bool PathInfo::isDirectory() const
 {
-    return m_isFile;
+    return m_isDirectory;
 }
 
 
@@ -51,10 +51,10 @@ void PathInfo::setImageSource(const QUrl &newImageSource)
     emit imageSourceChanged();
 }
 
-void PathInfo::setIsFile(bool newIsFile)
+void PathInfo::setIsDirectory(bool newIsDirectory)
 {
-    if (m_isFile == newIsFile)
+    if (m_isDirectory == newIsDirectory)
         return;
-    m_isFile = newIsFile;
-    emit isFileChanged();
+    m_isDirectory = newIsDirectory;
+    emit isDirectoryChanged();
 }

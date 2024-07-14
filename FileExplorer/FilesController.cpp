@@ -40,8 +40,8 @@ QVariant FilesController::data(const QModelIndex &index, int role) const
             return pathInfo->path();
         case PathItemImageSourceRole:
             return pathInfo->imageSource();
-        case PathItemIsFileRole:
-            return pathInfo->isFile();
+        case PathItemIsDirectoryRole:
+            return pathInfo->isDirectory();
         }
     }
     return {};
@@ -54,7 +54,7 @@ QHash<int, QByteArray> FilesController::roleNames() const
     result[PathItemNameRole] = "pathItemName";
     result[PathItemPathRole] = "pathItemPath";
     result[PathItemImageSourceRole] = "pathItemImageSource";
-    result[PathItemIsFileRole] = "pathItemIsFile";
+    result[PathItemIsDirectoryRole] = "pathItemIsDirectory";
 
     return result;
 }
@@ -72,7 +72,7 @@ void FilesController::setCurrentDirectory(const QString &newCurrentDirectory)
     emit currentDirectoryChanged();
 }
 
-void FilesController::addPathItem(const QString &name, const QString &path, const QUrl &imageSource, const bool &isFile)
+void FilesController::addPathItem(const QString &name, const QString &path, const QUrl &imageSource, const bool &isDirectory)
 {
     beginInsertRows(QModelIndex(), m_pathItemList.length(), m_pathItemList.length());
     PathInfo* pathInfo = new PathInfo(this);
@@ -80,7 +80,7 @@ void FilesController::addPathItem(const QString &name, const QString &path, cons
     pathInfo->setName(name);
     pathInfo->setPath(path);
     pathInfo->setImageSource(imageSource);
-    pathInfo->setIsFile(isFile);
+    pathInfo->setIsDirectory(isDirectory);
 
     m_pathItemList << pathInfo;
 

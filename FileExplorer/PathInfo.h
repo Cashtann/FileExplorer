@@ -14,7 +14,7 @@ class PathInfo : public QObject
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged FINAL)
     Q_PROPERTY(QString path READ path WRITE setPath NOTIFY pathChanged FINAL)
     Q_PROPERTY(QUrl imageSource READ imageSource WRITE setImageSource NOTIFY imageSourceChanged FINAL)
-    Q_PROPERTY(bool isFile READ isFile WRITE setIsFile NOTIFY isFileChanged FINAL)
+    Q_PROPERTY(bool isDirectory READ isDirectory WRITE setIsDirectory NOTIFY isDirectoryChanged FINAL)
 
 public:
 
@@ -30,8 +30,8 @@ public:
     void setImageSource(const QUrl &newImageSource);
 
 
-    bool isFile() const;
-    void setIsFile(bool newIsFile);
+    bool isDirectory() const;
+    void setIsDirectory(bool newIsDirectory);
 
 
 signals:
@@ -40,14 +40,14 @@ signals:
     void pathChanged();
     void imageSourceChanged();
 
-    void isFileChanged();
+    void isDirectoryChanged();
 
 private:
 
     QString m_name = "[error] not found";
     QString m_path = "/error/not/found";
     QUrl m_imageSource = QUrl("assets/icons/error.png");
-    bool m_isFile = false;
+    bool m_isDirectory = false;
 };
 
 #endif // PATHINFO_H

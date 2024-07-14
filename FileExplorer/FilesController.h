@@ -20,7 +20,7 @@ public:
         PathItemNameRole = Qt::UserRole + 1,
         PathItemPathRole,
         PathItemImageSourceRole,
-        PathItemIsFileRole
+        PathItemIsDirectoryRole
     };
 
 

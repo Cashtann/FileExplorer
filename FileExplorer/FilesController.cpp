@@ -2,18 +2,22 @@
 #include "PathInfo.h"
 #include "FileSystem.h"
 #include <QUrl>
+#include <QDebug>
 
 FilesController::FilesController(QObject *parent)
     : QAbstractListModel{parent}
 {
-    QString name = "dupa.png";
-    QString path = "/home/cashtan";
-    QUrl imageSource = QUrl("assets/icons/folder_generic.png");
-    bool isFile = true;
-    addPathItem(name, path, imageSource, isFile);
-    addPathItem(name, path, imageSource, isFile);
-    addPathItem(name, path, imageSource, isFile);
-    addPathItem(name, path, imageSource, isFile);
+    m_currentDirectory = FileSystem::getRootDirectory();
+    qDebug() << "Current directory: " << m_currentDirectory;
+    addAllCurrentPathItems();
+    // QString name = "dupa.png";
+    // QString path = "/home/cashtan";
+    // QUrl imageSource = QUrl("assets/icons/folder_generic.png");
+    // bool isFile = true;
+    // addPathItem(name, path, imageSource, isFile);
+    // addPathItem(name, path, imageSource, isFile);
+    // addPathItem(name, path, imageSource, isFile);
+    // addPathItem(name, path, imageSource, isFile);
 
 }
 
@@ -91,7 +95,18 @@ void FilesController::wipeAllPathItems()
     }
 }
 
+void FilesController::addAllCurrentPathItems()
+{
+    auto allCurrentSubdirs = FileSystem::getSubdirectories(m_currentDirectory);
+    for (const auto& subdir : allCurrentSubdirs)
+    {
+        auto f = FileSystem::processPath(subdir);
+        addPathItem(f.fullName, f.path, f.imageSource, f.isDirectory);
+    }
+}
+
 void FilesController::refreshAllPathItems()
 {
+    wipeAllPathItems();
 
 }

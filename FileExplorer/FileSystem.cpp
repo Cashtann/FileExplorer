@@ -34,8 +34,32 @@ std::vector<QString> FileSystem::getSubdirectories(const QString& dir)
     {
         for (const auto& entry : fs::directory_iterator((fs::path)dir.toStdString()))
         {
-            subdirs.emplace_back(QString::fromStdString(entry.path().filename()));
+            subdirs.emplace_back(QString::fromStdString(entry.path()));
         }
     }
     return subdirs;
+}
+
+PathProperties FileSystem::processPath(const QString &path)
+{
+    PathProperties result;
+    fs::path entry = fs::path(path.toStdString());
+
+    result.fullName = QString::fromStdString((std::string)entry.filename());
+    result.path = path;
+    if (entry.has_stem())
+        result.stem = QString::fromStdString((std::string)entry.stem());
+    else result.stem = QString("");
+    if (entry.has_extension())
+        result.extension = QString::fromStdString((std::string)entry.extension());
+    else result.extension = QString("");
+    result.isDirectory = fs::is_directory(entry);
+
+    if (result.isDirectory)
+        result.imageSource = QUrl("assets/icons/folder_generic.png");
+    else
+        result.imageSource = QUrl("assets/icons/app_generic.png");
+
+    return result;
+
 }

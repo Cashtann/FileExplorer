@@ -39,6 +39,7 @@ public slots:
                      const QUrl& imageSource,
                      const bool& isFile);
     void wipeAllPathItems();
+    void addAllCurrentPathItems();
     void refreshAllPathItems();
 
 signals:

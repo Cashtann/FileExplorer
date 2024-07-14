@@ -41,6 +41,7 @@ public slots:
     void wipeAllPathItems();
     void addAllCurrentPathItems();
     void refreshAllPathItems();
+    void changeDirectory(const QString& newDir);
 
 signals:
 

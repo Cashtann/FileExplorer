@@ -101,7 +101,8 @@ Item {
 
                 onClicked: {
                     if (delegate.pathItemIsDirectory){
-                        PathsController.printCurrentSubdirectories()
+                        //PathsController.printCurrentSubdirectories()
+                        FilesController.changeDirectory(delegate.pathItemPath);
                     }
                 }
             }

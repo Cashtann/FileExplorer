@@ -63,3 +63,8 @@ PathProperties FileSystem::processPath(const QString &path)
     return result;
 
 }
+
+bool FileSystem::isValidDir(const QString &path)
+{
+    return fs::is_directory(fs::path(path.toStdString())) ? true : false;
+}

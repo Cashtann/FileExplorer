@@ -1,12 +1,17 @@
 import QtQuick
 import QtQuick.Layouts
 import fs.controllers.PathsController
+import fs.controllers.FilesController
 
 Window {
     id: root
 
     width: 1080
     height: 600
+
+    minimumWidth: 485
+    minimumHeight: 245
+
     visible: true
     title: qsTr("File Explorer")
     color: "#181818"
@@ -38,9 +43,6 @@ Window {
                     margins: 5
                 }
             }
-
-
-
         }
     }
     Item {
@@ -61,34 +63,19 @@ Window {
             }
             color: "#181818"
 
-            Flow {
-                anchors.fill: parent
+            FilesPanel {
+                id: filesPanel
 
-                spacing: 5
-
-                Repeater {
-                    model: 5
-                    anchors.fill: parent
-
-                    ItemBox {
-                        infoProvider {
-                            imageSource: "assets/icons/folder_generic.png"
-                            name: "test.jpg abcdefghjiklmnop"
-                        }
-                        anchors {
-                            //left: parent.left
-                            //top: parent.top
-                            //margins: 15
-                        }
-                    }
+                anchors {
+                    fill: parent
                 }
             }
 
             ItemBox {
-                infoProvider {
+                /*infoProvider {
                     imageSource: "assets/icons/app_generic.png"
                     name: "test.jpg abcdefghjiklmnop"
-                }
+                }*/
                 //text: "test.jpg"
                 anchors {
                     //left: parent.left

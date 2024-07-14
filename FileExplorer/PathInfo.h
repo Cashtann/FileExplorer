@@ -5,6 +5,7 @@
 #include <QUrl>
 #include <qqml.h>
 
+
 class PathInfo : public QObject
 {
     Q_OBJECT
@@ -16,35 +17,37 @@ class PathInfo : public QObject
     Q_PROPERTY(bool isFile READ isFile WRITE setIsFile NOTIFY isFileChanged FINAL)
 
 public:
+
     explicit PathInfo(QObject *parent = nullptr);
 
+
     QString name() const;
-
     QString path() const;
-
     QUrl imageSource() const;
 
-    bool isFile() const;
-
     void setName(const QString &newName);
-
     void setPath(const QString &newPath);
-
     void setImageSource(const QUrl &newImageSource);
 
+
+    bool isFile() const;
     void setIsFile(bool newIsFile);
 
+
 signals:
+
     void nameChanged();
     void pathChanged();
     void imageSourceChanged();
+
     void isFileChanged();
 
 private:
-    QString m_name;
-    QString m_path;
-    QUrl m_imageSource;
-    bool m_isFile;
+
+    QString m_name = "[error] not found";
+    QString m_path = "/error/not/found";
+    QUrl m_imageSource = QUrl("assets/icons/error.png");
+    bool m_isFile = false;
 };
 
 #endif // PATHINFO_H

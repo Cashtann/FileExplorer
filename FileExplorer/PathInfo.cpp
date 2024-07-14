@@ -4,6 +4,7 @@ PathInfo::PathInfo(QObject *parent)
     : QObject{parent}
 {}
 
+
 QString PathInfo::name() const
 {
     return m_name;
@@ -19,10 +20,12 @@ QUrl PathInfo::imageSource() const
     return m_imageSource;
 }
 
+
 bool PathInfo::isFile() const
 {
     return m_isFile;
 }
+
 
 void PathInfo::setName(const QString &newName)
 {

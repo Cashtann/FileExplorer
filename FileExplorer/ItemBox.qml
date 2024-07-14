@@ -1,19 +1,26 @@
 import QtQuick
 import fs.controllers.PathsController
+import fs.controllers.FilesController
 import FileExplorer
 
 Item {
     id: root
+}
 
-    readonly property ShortcutInfo infoProvider: ShortcutInfo {}
+
+/*
+Item {
+    id: root
+
+    readonly property PathInfo infoProvider: PathInfo {}
 
     property int imageWidth: 50
 
-    // When creating new object
-    // you need to specify "text" (text: "something")
-    // as well as id, width and height
-    // you may also need to specify Slot
-    // "onClicked: { some logic here }
+
+    required property string name
+    required property string path
+    required property url imageSource
+    required property bool isFile
 
     signal clicked
 
@@ -40,10 +47,11 @@ Item {
     Image {
         id: img
 
-        source: infoProvider.imageSource
+        //source: infoProvider.imageSource
+        source: root.imageSource
 
         fillMode: Image.PreserveAspectFit
-        mipmap: true
+        //mipmap: true
         anchors {
             top: parent.top
             left: parent.left
@@ -53,47 +61,24 @@ Item {
             rightMargin: (root.width - root.imageWidth) / 2
         }
     }
-    /* // Alternative text positioning, creates fixed box around text, maybe used in the future
-    Item {
-        id: textContainer
-        width: parent.width - 20
-        anchors {
-            bottom: parent.bottom
-            top: img.bottom
-            bottomMargin: 5
-            topMargin: 5
-            horizontalCenter: parent.horizontalCenter
-        }
-        Text {
-            id: buttonText
-            text: infoProvider.name
-            color: "#ffffff"
-            font.pointSize: 12
-            width: parent.width
-            height: parent.height
-            anchors.centerIn: parent
-            wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-            elide: Text.ElideRight
-            maximumLineCount: 2;
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-
-
-
-        }
-    }*/
 
     Text {
         id: buttonText
-        text: infoProvider.name
+
+        //text: infoProvider.name
+        text: root.name
+
         color: "#ffffff"
         font.pointSize: 10
+
         width: parent.width - 20
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
         elide: Text.ElideRight
+
         maximumLineCount: 2;
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
+
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
 
         anchors {
             bottom: parent.bottom
@@ -117,5 +102,6 @@ Item {
         }
     }
 }
+*/
 
 

@@ -55,7 +55,10 @@ Window {
 
         Rectangle {
             id: rightbar_bg
-            anchors.fill: parent
+            anchors {
+                fill: parent
+                margins: 20
+            }
             color: "#181818"
 
             Flow {
@@ -68,9 +71,10 @@ Window {
                     anchors.fill: parent
 
                     ItemBox {
-                        imageSource: "assets/icons/folder_generic.png"
-                        text: "test.jpg abcdefghjiklmnop"
-                        //text: "test.jpg"
+                        infoProvider {
+                            imageSource: "assets/icons/folder_generic.png"
+                            name: "test.jpg abcdefghjiklmnop"
+                        }
                         anchors {
                             //left: parent.left
                             //top: parent.top
@@ -81,8 +85,10 @@ Window {
             }
 
             ItemBox {
-                imageSource: "assets/icons/folder_generic.png"
-                text: "test.jpg abcdefghjiklmnop"
+                infoProvider {
+                    imageSource: "assets/icons/app_generic.png"
+                    name: "test.jpg abcdefghjiklmnop"
+                }
                 //text: "test.jpg"
                 anchors {
                     //left: parent.left

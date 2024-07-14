@@ -1,14 +1,13 @@
 import QtQuick
 import fs.controllers.PathsController
+import FileExplorer
 
 Item {
     id: root
 
-    property alias text: buttonText.text
-    property alias imageSource: img.source
-    property string path
-    property int imageWidth: 60
+    readonly property ShortcutInfo infoProvider: ShortcutInfo {}
 
+    property int imageWidth: 50
 
     // When creating new object
     // you need to specify "text" (text: "something")
@@ -18,8 +17,8 @@ Item {
 
     signal clicked
 
-    width: 120
-    height: 120
+    width: 100
+    height: 100
 
     Rectangle {
         id: background
@@ -30,9 +29,9 @@ Item {
 
         color: "#ffffff"
         opacity: if (buttonMouseArea.containsPress) {
-                   return 0.2
-               } else if (buttonMouseArea.containsMouse) {
                    return 0.1
+               } else if (buttonMouseArea.containsMouse) {
+                   return 0.05
                } else {
                    0
                }
@@ -41,6 +40,7 @@ Item {
     Image {
         id: img
 
+        source: infoProvider.imageSource
 
         fillMode: Image.PreserveAspectFit
         mipmap: true
@@ -66,6 +66,7 @@ Item {
         }
         Text {
             id: buttonText
+            text: infoProvider.name
             color: "#ffffff"
             font.pointSize: 12
             width: parent.width
@@ -84,8 +85,9 @@ Item {
 
     Text {
         id: buttonText
+        text: infoProvider.name
         color: "#ffffff"
-        font.pointSize: 12
+        font.pointSize: 10
         width: parent.width - 20
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
         elide: Text.ElideRight
@@ -97,7 +99,7 @@ Item {
             bottom: parent.bottom
             top: img.bottom
             bottomMargin: 5
-            topMargin: 5
+            //topMargin: 5
             horizontalCenter: parent.horizontalCenter
         }
     }

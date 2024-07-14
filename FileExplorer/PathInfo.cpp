@@ -23,3 +23,35 @@ bool PathInfo::isFile() const
 {
     return m_isFile;
 }
+
+void PathInfo::setName(const QString &newName)
+{
+    if (m_name == newName)
+        return;
+    m_name = newName;
+    emit nameChanged();
+}
+
+void PathInfo::setPath(const QString &newPath)
+{
+    if (m_path == newPath)
+        return;
+    m_path = newPath;
+    emit pathChanged();
+}
+
+void PathInfo::setImageSource(const QUrl &newImageSource)
+{
+    if (m_imageSource == newImageSource)
+        return;
+    m_imageSource = newImageSource;
+    emit imageSourceChanged();
+}
+
+void PathInfo::setIsFile(bool newIsFile)
+{
+    if (m_isFile == newIsFile)
+        return;
+    m_isFile = newIsFile;
+    emit isFileChanged();
+}

@@ -27,27 +27,9 @@ Window {
             anchors.fill: parent
             color: "#282828"
 
-            Column {
-                anchors.fill: parent
-
-                spacing: 5
-
-                Repeater {
-                    ShortcutButton {
-                        text: "Folder dupa"
-                        width: leftbar_bg.width - 10
-                        height: 40
-                        anchors {
-                            left: leftbar_bg.left
-                            right: leftbar_bg.right
-                            margins: 5
-                        }
-                    }
-                }
-            }
 
             ShortcutButton {
-                text: "Folder dupa"
+                text: "Folder dupa kupa abcdefghijklmnop"
                 width: parent.width - 10
                 height: 40
                 anchors {
@@ -75,6 +57,39 @@ Window {
             id: rightbar_bg
             anchors.fill: parent
             color: "#181818"
+
+            Flow {
+                anchors.fill: parent
+
+                spacing: 5
+
+                Repeater {
+                    model: 5
+                    anchors.fill: parent
+
+                    ItemBox {
+                        imageSource: "assets/icons/folder_generic.png"
+                        text: "test.jpg abcdefghjiklmnop"
+                        //text: "test.jpg"
+                        anchors {
+                            //left: parent.left
+                            //top: parent.top
+                            //margins: 15
+                        }
+                    }
+                }
+            }
+
+            ItemBox {
+                imageSource: "assets/icons/folder_generic.png"
+                text: "test.jpg abcdefghjiklmnop"
+                //text: "test.jpg"
+                anchors {
+                    //left: parent.left
+                    //top: parent.top
+                    //margins: 15
+                }
+            }
         }
     }
 

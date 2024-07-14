@@ -36,6 +36,8 @@ Item {
         id: buttonText
         color: "#ffffff"
         font.pointSize: 12
+        width: parent.width - 20
+        elide: Text.ElideRight
 
         anchors.centerIn: parent
     }

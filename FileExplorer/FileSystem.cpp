@@ -42,7 +42,7 @@ std::vector<QString> FileSystem::getSubdirectories(const QString& dir)
     for (const auto& qString : subdirs)
     {
         //char pathFirstChar = ((std::string)fs::path(qString.toStdString()).filename())[0];
-        if (std::isalnum(((std::string)fs::path(qString.toStdString()).filename())[0]))
+        if (std::isalnum(((std::string)fs::path(qString.toStdString()).filename())[0])) // Hides hidden directories (e.g. ".gitignore")
         {
             temp.emplace_back(qString.toStdString());
         }

@@ -4,13 +4,13 @@
 #include <QUrl>
 #include <QDebug>
 
+
 FilesController::FilesController(QObject *parent)
     : QAbstractListModel{parent}
 {
     setCurrentDirectory(FileSystem::getRootDirectory());
     qDebug() << "Current directory: " << m_currentDirectory;
     addAllCurrentPathItems();
-
 }
 
 int FilesController::rowCount(const QModelIndex &parent) const
@@ -126,3 +126,4 @@ void FilesController::goBack()
     refreshAllPathItems(FileSystem::gotoParentDirectory(m_currentDirectory));
     emit currentDirectoryChanged();
 }
+

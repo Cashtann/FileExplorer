@@ -11,7 +11,6 @@ class FilesController : public QAbstractListModel
 {
     Q_OBJECT
 
-
     Q_PROPERTY(QString currentDirectory READ currentDirectory WRITE setCurrentDirectory NOTIFY currentDirectoryChanged FINAL)
     //Q_PROPERTY(PathInfo* item READ item WRITE setItem NOTIFY itemChanged FINAL)
 
@@ -45,13 +44,13 @@ public slots:
     void goBack();
 
 signals:
-
     void currentDirectoryChanged();
 
 private:
     QList<PathInfo*> m_pathItemList;
 
     QString m_currentDirectory;
+
 };
 
 #endif // FILESCONTROLLER_H

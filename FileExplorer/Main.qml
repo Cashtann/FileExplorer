@@ -82,10 +82,24 @@ Window {
                 onClicked: {
                     FilesController.goBack()
                 }
-
-
-
             }
+
+            ImageButton {
+                id: refreshButton
+                anchors {
+                    verticalCenter: parent.verticalCenter
+                    left: goBackButton.right
+                    leftMargin: 5
+                }
+                width: 40
+                height: 40
+                imageWidth: 30
+                imageSource: "assets/icons/refresh.png"
+                onClicked: {
+                    FilesController.refreshAllPathItems()
+                }
+            }
+
 
             Rectangle {
                 id: pathbar

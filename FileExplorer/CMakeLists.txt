@@ -29,9 +29,11 @@ qt_add_qml_module(appFileExplorer
         assets/icons/back_symbol.png
         assets/icons/next_symbol.png
         assets/icons/go_previous.png
+        assets/icons/refresh.png
         SOURCES ShortcutInfo.h ShortcutInfo.cpp
         SOURCES FilesController.h FilesController.cpp
         QML_FILES FilesPanel.qml
+        SOURCES ShortcutsController.h ShortcutsController.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

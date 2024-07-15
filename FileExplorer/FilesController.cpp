@@ -125,6 +125,12 @@ void FilesController::refreshAllPathItems(const QString& newDir)
     addAllCurrentPathItems();
 }
 
+void FilesController::refreshAllPathItems()
+{
+    wipeAllPathItems();
+    addAllCurrentPathItems();
+}
+
 void FilesController::changeDirectory(const QString &newDir)
 {
     if (FileSystem::isValidDir(newDir))

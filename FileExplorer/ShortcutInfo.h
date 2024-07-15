@@ -18,27 +18,22 @@ public:
     explicit ShortcutInfo(QObject *parent = nullptr);
 
     QString name() const;
-
     QString path() const;
-
     QUrl imageSource() const;
 
     void setName(const QString &newName);
-
     void setPath(const QString &newPath);
-
     void setImageSource(const QUrl &newImageSource);
 
 signals:
     void nameChanged();
     void pathChanged();
-
     void imageSourceChanged();
 
 private:
     QString m_name = "unknown.file";
     QString m_path = "/unknown/path";
-    QUrl m_imageSource = QUrl("assets/icons/app_generic.png");
+    QUrl m_imageSource = QUrl("assets/icons/folder_generic.png");
 };
 
 #endif // SHORTCUTINFO_H

@@ -20,7 +20,6 @@ public:
 
     explicit PathInfo(QObject *parent = nullptr);
 
-
     QString name() const;
     QString path() const;
     QUrl imageSource() const;
@@ -29,17 +28,14 @@ public:
     void setPath(const QString &newPath);
     void setImageSource(const QUrl &newImageSource);
 
-
     bool isDirectory() const;
     void setIsDirectory(bool newIsDirectory);
-
 
 signals:
 
     void nameChanged();
     void pathChanged();
     void imageSourceChanged();
-
     void isDirectoryChanged();
 
 private:

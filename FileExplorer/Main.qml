@@ -10,8 +10,9 @@ Window {
     width: 1080
     height: 600
 
-    minimumWidth: 485
-    minimumHeight: 265
+    // minimumWidth: 485
+    minimumWidth: 580
+    minimumHeight: 260
 
     visible: true
     title: qsTr("File Explorer")
@@ -163,7 +164,7 @@ Window {
                     color: "#ffffff"
                     font.pointSize: 12
                     width: parent.width - 20
-                    font.bold: true
+                    font.bold: false
                     elide: Text.ElideLeft
                     verticalAlignment: Text.AlignVCenter
 

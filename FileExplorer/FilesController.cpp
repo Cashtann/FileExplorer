@@ -7,7 +7,7 @@
 FilesController::FilesController(QObject *parent)
     : QAbstractListModel{parent}
 {
-    setCurrentDirectory(FileSystem::getRootDirectory());
+    setCurrentDirectory(FileSystem::getHomeDir());
     qDebug() << "Current directory: " << m_currentDirectory;
     addAllCurrentPathItems();
 

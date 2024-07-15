@@ -81,6 +81,7 @@ PathProperties FileSystem::processPath(const QString &path)
     else
         result.imageSource = QUrl("assets/icons/app_generic.png");
 
+
     return result;
 
 }

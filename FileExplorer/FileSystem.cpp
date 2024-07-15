@@ -45,10 +45,9 @@ std::vector<QString> FileSystem::getSubdirectories(const QString& dir)
     }
     subdirs.clear();
     subdirs.reserve(temp.size());
-    //std::sort(temp.begin(), temp.end());
-    //
+
     std::sort(temp.begin(), temp.end(), caseInsensitiveCompare);
-    //
+
     for (const auto& string : temp)
     {
         subdirs.emplace_back(QString::fromStdString(string));

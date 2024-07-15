@@ -4,6 +4,22 @@
 #include <QObject>
 #include <qqml.h>
 #include <QAbstractListModel>
+#include <QThread>
+
+// class FileWatcher : public QObject
+// {
+//     Q_OBJECT
+
+// public:
+//     void setDirectoryToWatch(const QString &directory);
+//     std::vector<std::string> getPaths() const;
+
+// public slots:
+//     void doWork(const QString& dirToWatch);
+
+// signals:
+//     void changeSpotted();
+// };
 
 class PathInfo;
 
@@ -24,6 +40,7 @@ public:
 
 
     explicit FilesController(QObject *parent = nullptr);
+    ~FilesController();
 
     virtual int rowCount(const QModelIndex &parent) const override;
     virtual QVariant data(const QModelIndex &index, int role) const override;
@@ -42,14 +59,18 @@ public slots:
     void refreshAllPathItems(const QString& newDir);
     void changeDirectory(const QString& newDir);
     void goBack();
+    // void handleChangesInCurrentDirectory();
 
 signals:
     void currentDirectoryChanged();
+    // void watchCurrentDirectory(const QString& dir);
 
 private:
     QList<PathInfo*> m_pathItemList;
 
     QString m_currentDirectory;
+
+    // QThread m_workerThread;
 
 };
 

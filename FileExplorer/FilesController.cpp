@@ -4,13 +4,25 @@
 #include <QUrl>
 #include <QDebug>
 
-
 FilesController::FilesController(QObject *parent)
     : QAbstractListModel{parent}
 {
     setCurrentDirectory(FileSystem::getRootDirectory());
     qDebug() << "Current directory: " << m_currentDirectory;
     addAllCurrentPathItems();
+
+    // FileWatcher *fileWatcher = new FileWatcher;
+    // fileWatcher->moveToThread(&m_workerThread);
+    // connect(&m_workerThread, &QThread::finished, fileWatcher, &QObject::deleteLater);
+    // connect(this, &FilesController::watchCurrentDirectory, fileWatcher, &FileWatcher::doWork);
+    // connect(fileWatcher, &FileWatcher::changeSpotted, this, &FilesController::handleChangesInCurrentDirectory);
+    // m_workerThread.start();
+}
+
+FilesController::~FilesController()
+{
+    // m_workerThread.quit();
+    // m_workerThread.wait();
 }
 
 int FilesController::rowCount(const QModelIndex &parent) const
@@ -127,3 +139,15 @@ void FilesController::goBack()
     emit currentDirectoryChanged();
 }
 
+// void FilesController::handleChangesInCurrentDirectory()
+// {
+
+// }
+
+
+
+
+// void FileWatcher::doWork(const QString &dirToWatch)
+// {
+
+// }

@@ -93,6 +93,10 @@ PathProperties FileSystem::processPath(const QString &path)
 
     if (result.isDirectory)
         result.imageSource = QUrl("assets/icons/folder_generic.png");
+    else if (result.extension == ".cpp")
+        result.imageSource = QUrl("assets/icons/cpp.png");
+    else if (result.extension == ".h" || result.extension == ".hpp")
+        result.imageSource = QUrl("assets/icons/hpp.png");
     else
         result.imageSource = QUrl("assets/icons/app_generic.png");
 

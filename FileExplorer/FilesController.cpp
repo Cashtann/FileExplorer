@@ -85,18 +85,26 @@ void FilesController::addPathItem(const QString &name, const QString &path, cons
 
 void FilesController::wipeAllPathItems()
 {
+    // beginRemoveRows(QModelIndex(), 0, m_pathItemList.length());
+    // std::vector<PathInfo*> toRemove;
+    // for (int i = 0; i < m_pathItemList.count(); i++)
+    // {
+    //     toRemove.emplace_back(m_pathItemList[i]);
+    // }
+    // m_pathItemList.clear();
+    // for (auto& toBeRemoved : toRemove)
+    // {
+    //     toBeRemoved->deleteLater();
+    // }
+    // toRemove.clear();
+    // endRemoveRows();
     beginRemoveRows(QModelIndex(), 0, m_pathItemList.length());
-    std::vector<PathInfo*> toRemove;
+
     for (int i = 0; i < m_pathItemList.count(); i++)
     {
-        toRemove.emplace_back(m_pathItemList[i]);
+        m_pathItemList[i]->deleteLater();
     }
     m_pathItemList.clear();
-    for (auto& toBeRemoved : toRemove)
-    {
-        toBeRemoved->deleteLater();
-    }
-    toRemove.clear();
     endRemoveRows();
 }
 

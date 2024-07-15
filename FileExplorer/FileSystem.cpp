@@ -1,6 +1,5 @@
 #include "FileSystem.h"
 #include <filesystem>
-#include <string>
 #include <vector>
 #include <algorithm>
 
@@ -46,7 +45,10 @@ std::vector<QString> FileSystem::getSubdirectories(const QString& dir)
     }
     subdirs.clear();
     subdirs.reserve(temp.size());
-    std::sort(temp.begin(), temp.end());
+    //std::sort(temp.begin(), temp.end());
+    //
+    std::sort(temp.begin(), temp.end(), caseInsensitiveCompare);
+    //
     for (const auto& string : temp)
     {
         subdirs.emplace_back(QString::fromStdString(string));
@@ -88,4 +90,16 @@ QString FileSystem::gotoParentDirectory(const QString& path)
 {
     return QString::fromStdString((std::string)fs::path(path.toStdString()).parent_path());
 
+}
+
+bool FileSystem::caseInsensitiveCompare(const std::string &a, const std::string &b)
+{
+    std::string lowerA = a;
+    std::string lowerB = b;
+
+    // Convert both strings to lower case for comparison
+    std::transform(lowerA.begin(), lowerA.end(), lowerA.begin(), ::tolower);
+    std::transform(lowerB.begin(), lowerB.end(), lowerB.begin(), ::tolower);
+
+    return lowerA < lowerB;
 }

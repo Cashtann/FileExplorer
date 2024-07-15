@@ -4,6 +4,7 @@
 #include <QObject>
 #include <vector>
 #include <QUrl>
+#include <string>
 
 struct PathProperties
 {
@@ -33,6 +34,8 @@ public:
     static bool isValidDir(const QString& path);
 
     static QString gotoParentDirectory(const QString& path);
+
+    static bool caseInsensitiveCompare(const std::string &a, const std::string &b);
 };
 
 #endif // FILESYSTEM_H

@@ -10,14 +10,6 @@ FilesController::FilesController(QObject *parent)
     setCurrentDirectory(FileSystem::getRootDirectory());
     qDebug() << "Current directory: " << m_currentDirectory;
     addAllCurrentPathItems();
-    // QString name = "dupa.png";
-    // QString path = "/home/cashtan";
-    // QUrl imageSource = QUrl("assets/icons/folder_generic.png");
-    // bool isFile = true;
-    // addPathItem(name, path, imageSource, isFile);
-    // addPathItem(name, path, imageSource, isFile);
-    // addPathItem(name, path, imageSource, isFile);
-    // addPathItem(name, path, imageSource, isFile);
 
 }
 

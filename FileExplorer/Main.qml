@@ -79,6 +79,10 @@ Window {
                 height: 40
                 imageWidth: 20
                 imageSource: "assets/icons/go_previous.png"
+                onClicked: {
+                    FilesController.goBack()
+                }
+
 
 
             }
@@ -130,7 +134,7 @@ Window {
                 bottom: parent.bottom
                 leftMargin: 20
                 rightMargin: 20
-                bottomMargin: 20
+                bottomMargin: 0
                 topMargin: 10
             }
             color: "#181818"

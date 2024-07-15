@@ -58,7 +58,7 @@ Item {
         hoverEnabled: true
 
         onClicked: {
-            FilesController.goBack()
+            root.clicked()
         }
     }
 }

@@ -76,6 +76,11 @@ void ShortcutsController::wipeAllShortcutItems()
 
 void ShortcutsController::addAllShortcutItems()
 {
+    // Adds Home directory as a first item
+    auto f = FileSystem::processPath(FileSystem::getHomeDir());
+    f.fullName = QString("Home" + FileSystem::directorySeparator + f.fullName);
+    addShortcutItem(f.fullName, f.path, f.imageSource);
+
     auto folders = FileSystem::getCommonUserFolders();
 
     for (const auto& folder : folders)

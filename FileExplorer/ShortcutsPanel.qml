@@ -15,7 +15,7 @@ Item {
         }
         clip: true
         model: ShortcutsController
-        spacing: 10
+        spacing: 5
 
         delegate: Item {
             id: delegate
@@ -24,7 +24,7 @@ Item {
             required property string shortcutPath
             required property url shortcutImageSource
 
-            property int imageWidth: 20
+            property int imageWidth: 30
 
             height: 45
 
@@ -55,14 +55,12 @@ Item {
                 source: delegate.shortcutImageSource
 
                 fillMode: Image.PreserveAspectFit
+                width: delegate.imageWidth
                 //mipmap: true
                 anchors {
-                    top: parent.top
                     left: parent.left
-                    right: parent.right
-                    topMargin: 5
-                    leftMargin: (delegate.width - delegate.imageWidth) / 2
-                    rightMargin: (delegate.width - delegate.imageWidth) / 2
+                    leftMargin: 10
+                    verticalCenter: parent.verticalCenter
                 }
             }
 
@@ -72,23 +70,19 @@ Item {
                 text: delegate.shortcutName
 
                 color: "#ffffff"
-                font.pointSize: 10
+                font.pointSize: 12
 
-                width: parent.width - 20
-                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                width: parent.width - img.width - 40
                 elide: Text.ElideRight
-
-                maximumLineCount: 2;
-
-                horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-
                 anchors {
+                    left: img.right
+                    right: parent.right
+                    top: parent.top
                     bottom: parent.bottom
-                    top: img.bottom
-                    bottomMargin: 5
-                    //topMargin: 5
-                    horizontalCenter: parent.horizontalCenter
+                    leftMargin: 10
+                    rightMargin: 10
+
                 }
             }
 

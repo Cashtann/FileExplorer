@@ -42,6 +42,8 @@ public:
     static std::filesystem::path getXDGUserDir(const std::string &key, const std::filesystem::path &defaultPath);
 
     static std::vector<QString> getCommonUserFolders();
+
+    static QString getHomeDir();
 };
 
 #endif // FILESYSTEM_H

@@ -176,3 +176,9 @@ std::vector<QString> FileSystem::getCommonUserFolders()
 
     return folders;
 }
+
+QString FileSystem::getHomeDir()
+{
+    std::string homeDir = std::getenv("HOME");
+    return QString::fromStdString(homeDir);
+}

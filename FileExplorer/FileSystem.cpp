@@ -210,7 +210,7 @@ std::vector<QString> FileSystem::findPhraseElementsInDirectoryIterator(const QSt
         {
             if (entry.path().filename().string().find(searchPhrase) != std::string::npos)
             {
-                qDebug() << entry.path().string();
+                //qDebug() << entry.path().string();
                 result.emplace_back(QString::fromStdString(entry.path().string()));
             }
         }

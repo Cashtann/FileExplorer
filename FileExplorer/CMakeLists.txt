@@ -32,6 +32,7 @@ qt_add_qml_module(appFileExplorer
         assets/icons/next_symbol.png
         assets/icons/go_previous.png
         assets/icons/refresh.png
+        assets/icons/search.png
         SOURCES ShortcutInfo.h ShortcutInfo.cpp
         SOURCES FilesController.h FilesController.cpp
         QML_FILES FilesPanel.qml

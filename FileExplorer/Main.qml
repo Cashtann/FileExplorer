@@ -173,6 +173,20 @@ Window {
                     }
                 }
 
+                Image {
+                    id: searchicon
+
+                    source: "assets/icons/search.png"
+                    fillMode: Image.PreserveAspectFit
+                    //mipmap: true
+                    height: 20
+                    anchors {
+                        right: parent.right
+                        verticalCenter: parent.verticalCenter
+                        rightMargin: 10
+                    }
+                }
+
                 TextInput {
                     id: pathText
 

@@ -19,6 +19,9 @@ Window {
     color: "#181818"
     //color: "#282828"
 
+    signal searchSubmitted
+    signal searchBarOutOfFocus
+
     Item {
         id: leftbar
         width: 240
@@ -135,6 +138,7 @@ Window {
                 imageSource: "assets/icons/refresh.png"
                 onClicked: {
                     FilesController.refreshAllPathItems()
+                    activeFocus: true
                 }
             }
 
@@ -142,7 +146,7 @@ Window {
             Rectangle {
                 id: pathbar
 
-                color: "#383838"
+                color: "#276bb0"
 
                 radius: 5
 
@@ -157,7 +161,20 @@ Window {
                     bottomMargin: 3
                 }
 
-                Text {
+                Rectangle {
+                    id: pathTextContainer
+
+                    color: "#383838"
+                    //activeFocusOnTab: true
+
+                    radius: pathbar.radius
+                    anchors {
+                        fill: parent
+                        margins: pathText.activeFocus ? 2 : 0
+                    }
+                }
+
+                TextInput {
                     id: pathText
 
                     text: FilesController.currentDirectory
@@ -165,7 +182,9 @@ Window {
                     font.pointSize: 12
                     width: parent.width - 20
                     font.bold: false
-                    elide: Text.ElideLeft
+                    clip: true
+
+                    //elide: Text.ElideLeft
                     verticalAlignment: Text.AlignVCenter
 
                     anchors {
@@ -174,6 +193,14 @@ Window {
                         leftMargin: 10
                         verticalCenter: parent.verticalCenter
                     }
+
+                    onAccepted: {
+                        searchSubmitted()
+                    }
+                    Keys.onPressed: (event)=> {
+                        if (event.key === Qt.Key_Escape)
+                            searchBarOutOfFocus()
+                        }
                 }
             }
         }
@@ -201,5 +228,13 @@ Window {
                 }
             }
         }
+    }
+    onSearchSubmitted: {
+        searchBarOutOfFocus()
+        console.log(pathText.text)
+    }
+
+    onSearchBarOutOfFocus: {
+        pathText.focus = false
     }
 }

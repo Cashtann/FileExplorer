@@ -3,22 +3,7 @@
 
 #include <QObject>
 #include <QAbstractListModel>
-#include <QThread>
 
-// class FileWatcher : public QObject
-// {
-//     Q_OBJECT
-
-// public:
-//     void setDirectoryToWatch(const QString &directory);
-//     std::vector<std::string> getPaths() const;
-
-// public slots:
-//     void doWork(const QString& dirToWatch);
-
-// signals:
-//     void changeSpotted();
-// };
 
 class PathInfo;
 
@@ -27,7 +12,6 @@ class FilesController : public QAbstractListModel
     Q_OBJECT
 
     Q_PROPERTY(QString currentDirectory READ currentDirectory WRITE setCurrentDirectory NOTIFY currentDirectoryChanged FINAL)
-    //Q_PROPERTY(PathInfo* item READ item WRITE setItem NOTIFY itemChanged FINAL)
 
 public:
     enum PathItemRole {
@@ -59,18 +43,17 @@ public slots:
     void refreshAllPathItems();
     void changeDirectory(const QString& newDir);
     void goBack();
-    // void handleChangesInCurrentDirectory();
+    void search(const QString& phrase, const QString& path);
+
 
 signals:
     void currentDirectoryChanged();
-    // void watchCurrentDirectory(const QString& dir);
 
 private:
     QList<PathInfo*> m_pathItemList;
 
     QString m_currentDirectory;
 
-    // QThread m_workerThread;
 
 };
 

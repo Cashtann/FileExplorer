@@ -8,21 +8,13 @@ FilesController::FilesController(QObject *parent)
     : QAbstractListModel{parent}
 {
     setCurrentDirectory(FileSystem::getHomeDir());
-    qDebug() << "Current directory: " << m_currentDirectory;
+    //qDebug() << "Current directory: " << m_currentDirectory;
     addAllCurrentPathItems();
-
-    // FileWatcher *fileWatcher = new FileWatcher;
-    // fileWatcher->moveToThread(&m_workerThread);
-    // connect(&m_workerThread, &QThread::finished, fileWatcher, &QObject::deleteLater);
-    // connect(this, &FilesController::watchCurrentDirectory, fileWatcher, &FileWatcher::doWork);
-    // connect(fileWatcher, &FileWatcher::changeSpotted, this, &FilesController::handleChangesInCurrentDirectory);
-    // m_workerThread.start();
 }
 
 FilesController::~FilesController()
 {
-    // m_workerThread.quit();
-    // m_workerThread.wait();
+
 }
 
 int FilesController::rowCount(const QModelIndex &parent) const
@@ -145,15 +137,21 @@ void FilesController::goBack()
     emit currentDirectoryChanged();
 }
 
-// void FilesController::handleChangesInCurrentDirectory()
-// {
+void FilesController::search(const QString &phrase, const QString &path)
+{
+    qDebug() << "Searching for phrase: " << phrase << " in directory: " << path;
+    wipeAllPathItems();
+    std::vector<QString> searchResults = FileSystem::findPhraseElementsInDirectoryIterator(path, phrase);
+    for (const auto& entry : searchResults)
+    {
+        auto f = FileSystem::processPath(entry);
+        addPathItem(f.fullName, f.path, f.imageSource, f.isDirectory);
+    }
+}
 
-// }
 
 
 
 
-// void FileWatcher::doWork(const QString &dirToWatch)
-// {
 
-// }
+

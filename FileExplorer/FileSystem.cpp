@@ -2,6 +2,8 @@
 #include <algorithm>
 #include <fstream>
 #include <sstream>
+#include <QDebug>
+#include <iostream>
 
 namespace fs = std::filesystem;
 
@@ -29,36 +31,49 @@ QString FileSystem::changeCurrentDirectory(const QString &currDir, const QString
 
 std::vector<QString> FileSystem::getSubdirectories(const QString& dir)
 {
-    std::vector<QString> subdirs;
-    if (fs::is_directory((fs::path)dir.toStdString()))
+    try
     {
-        for (const auto& entry : fs::directory_iterator((fs::path)dir.toStdString()))
+        std::vector<QString> subdirs;
+        if (fs::is_directory((fs::path)dir.toStdString()))
         {
-            subdirs.emplace_back(QString::fromStdString(entry.path()));
+            for (const auto& entry : fs::directory_iterator((fs::path)dir.toStdString()))
+            {
+                subdirs.emplace_back(QString::fromStdString(entry.path()));
+            }
         }
-    }
-    std::vector<std::string> temp;
-    temp.reserve(subdirs.size());
-    for (const auto& qString : subdirs)
-    {
-        //char pathFirstChar = ((std::string)fs::path(qString.toStdString()).filename())[0];
-        if (std::isalnum(((std::string)fs::path(qString.toStdString()).filename())[0])) // Hides hidden directories (e.g. ".gitignore")
+        std::vector<std::string> temp;
+        temp.reserve(subdirs.size());
+        for (const auto& qString : subdirs)
         {
-            temp.emplace_back(qString.toStdString());
+            //char pathFirstChar = ((std::string)fs::path(qString.toStdString()).filename())[0];
+            if (std::isalnum(((std::string)fs::path(qString.toStdString()).filename())[0])) // Hides hidden directories (e.g. ".gitignore")
+            {
+                temp.emplace_back(qString.toStdString());
+            }
+            //temp.emplace_back(qString.toStdString());
         }
-        //temp.emplace_back(qString.toStdString());
+        subdirs.clear();
+        subdirs.reserve(temp.size());
+
+        std::sort(temp.begin(), temp.end(), caseInsensitiveCompare);
+
+        for (const auto& string : temp)
+        {
+            subdirs.emplace_back(QString::fromStdString(string));
+        }
+
+        return subdirs;
     }
-    subdirs.clear();
-    subdirs.reserve(temp.size());
-
-    std::sort(temp.begin(), temp.end(), caseInsensitiveCompare);
-
-    for (const auto& string : temp)
+    catch (const fs::filesystem_error& e)
     {
-        subdirs.emplace_back(QString::fromStdString(string));
+        qDebug() << "Error while opening the folder";
+    }
+    catch (const std::exception& e)
+    {
+        qDebug() << "General error: " << e.what();
     }
 
-    return subdirs;
+    return {getRootDirectory()};
 }
 
 PathProperties FileSystem::processPath(const QString &path)
@@ -183,3 +198,35 @@ QString FileSystem::getHomeDir()
     std::string homeDir = std::getenv("HOME");
     return QString::fromStdString(homeDir);
 }
+
+std::vector<QString> FileSystem::findPhraseElementsInDirectoryIterator(const QString &directory, const QString &phrase)
+{
+    std::string searchPhrase = phrase.toStdString();
+    std::vector<QString> result;
+    fs::path initialPath = fs::path(directory.toStdString());
+    try
+    {
+        for (const auto& entry : fs::recursive_directory_iterator(initialPath))
+        {
+            if (entry.path().filename().string().find(searchPhrase) != std::string::npos)
+            {
+                qDebug() << entry.path().string();
+                result.emplace_back(QString::fromStdString(entry.path().string()));
+            }
+        }
+    }
+    catch (const fs::filesystem_error& e)
+    {
+        qDebug() << "Error" << e.what();
+    }
+    catch (const std::exception& e)
+    {
+        qDebug() << "Error: " << e.what();
+    }
+
+    return result;
+}
+
+
+
+

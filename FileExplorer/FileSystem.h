@@ -44,6 +44,8 @@ public:
     static std::vector<QString> getCommonUserFolders();
 
     static QString getHomeDir();
+
+    static std::vector<QString> findPhraseElementsInDirectoryIterator(const QString& directory, const QString& phrase);
 };
 
 #endif // FILESYSTEM_H

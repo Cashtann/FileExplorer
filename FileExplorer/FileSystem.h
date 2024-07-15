@@ -5,6 +5,8 @@
 #include <vector>
 #include <QUrl>
 #include <string>
+#include <filesystem>
+
 
 struct PathProperties
 {
@@ -36,6 +38,10 @@ public:
     static QString gotoParentDirectory(const QString& path);
 
     static bool caseInsensitiveCompare(const std::string &a, const std::string &b);
+
+    static std::filesystem::path getXDGUserDir(const std::string &key, const std::filesystem::path &defaultPath);
+
+    static std::vector<QString> getCommonUserFolders();
 };
 
 #endif // FILESYSTEM_H

@@ -2,7 +2,6 @@
 #define FILESCONTROLLER_H
 
 #include <QObject>
-#include <qqml.h>
 #include <QAbstractListModel>
 #include <QThread>
 

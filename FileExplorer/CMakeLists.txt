@@ -34,6 +34,7 @@ qt_add_qml_module(appFileExplorer
         SOURCES FilesController.h FilesController.cpp
         QML_FILES FilesPanel.qml
         SOURCES ShortcutsController.h ShortcutsController.cpp
+        QML_FILES ShortcutsPanel.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

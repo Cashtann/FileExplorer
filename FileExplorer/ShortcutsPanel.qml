@@ -1,5 +1,6 @@
 import QtQuick
 import fs.controllers.FilesController
+import fs.controllers.ShortcutsController
 import FileExplorer
 
 Item {
@@ -7,29 +8,30 @@ Item {
 
     signal clicked
 
-    GridView {
+    ListView {
         id: itemsContainer
         anchors {
             fill: parent
         }
         clip: true
-        model: FilesController
-        //spacing: 5
-        cellWidth: 100
-        cellHeight: 100
+        model: ShortcutsController
+        spacing: 10
 
         delegate: Item {
             id: delegate
 
-            required property string pathItemName
-            required property string pathItemPath
-            required property url pathItemImageSource
-            required property bool pathItemIsDirectory
+            required property string shortcutName
+            required property string shortcutPath
+            required property url shortcutImageSource
 
-            property int imageWidth: 50
+            property int imageWidth: 20
 
-            width: 95
-            height: 95
+            height: 45
+
+            anchors {
+                left: parent.left
+                right: parent.right
+            }
 
             Rectangle {
                 id: background
@@ -50,7 +52,7 @@ Item {
             Image {
                 id: img
 
-                source: delegate.pathItemImageSource
+                source: delegate.shortcutImageSource
 
                 fillMode: Image.PreserveAspectFit
                 //mipmap: true
@@ -67,7 +69,7 @@ Item {
             Text {
                 id: buttonText
 
-                text: delegate.pathItemName
+                text: delegate.shortcutName
 
                 color: "#ffffff"
                 font.pointSize: 10
@@ -98,9 +100,7 @@ Item {
                 hoverEnabled: true
 
                 onClicked: {
-                    if (delegate.pathItemIsDirectory){
-                        FilesController.changeDirectory(delegate.pathItemPath);
-                    }
+                    FilesController.changeDirectory(delegate.shortcutPath);
                 }
             }
         }

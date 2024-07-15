@@ -1,6 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include "FilesController.h"
+#include "ShortcutsController.h"
 
 int main(int argc, char *argv[])
 {
@@ -10,6 +11,9 @@ int main(int argc, char *argv[])
 
     FilesController *filesController = new FilesController(&app);
     qmlRegisterSingletonInstance("fs.controllers.FilesController", 1, 0, "FilesController", filesController);
+
+    ShortcutsController *shortcutsController = new ShortcutsController(&app);
+    qmlRegisterSingletonInstance("fs.controllers.ShortcutsController", 1, 0, "ShortcutsController", shortcutsController);
 
     const QUrl url(QStringLiteral("qrc:/FileExplorer/Main.qml"));
     QObject::connect(

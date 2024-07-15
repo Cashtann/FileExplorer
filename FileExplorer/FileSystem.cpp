@@ -1,7 +1,7 @@
 #include "FileSystem.h"
-#include <filesystem>
-#include <vector>
 #include <algorithm>
+#include <fstream>
+#include <sstream>
 
 namespace fs = std::filesystem;
 
@@ -126,4 +126,53 @@ bool FileSystem::caseInsensitiveCompare(const std::string &a, const std::string 
 
     // If both start with special characters, compare normally
     return realA < realB;
+}
+
+std::filesystem::__cxx11::path FileSystem::getXDGUserDir(const std::string &key, const std::filesystem::__cxx11::path &defaultPath)
+{
+    const char *homeDir = std::getenv("HOME");
+    if (!homeDir)
+        return defaultPath;
+
+    std::ifstream userDirsFile(fs::path(homeDir) / ".config/user-dirs.dirs");
+    if (!userDirsFile.is_open())
+        return defaultPath;
+
+    std::string line;
+    while (std::getline(userDirsFile, line))
+    {
+        if (line.find(key) != std::string::npos)
+        {
+            std::istringstream iss(line);
+            std::string token;
+            while (iss >> token)
+            {
+                if (token.find("$HOME") != std::string::npos)
+                {
+                    std::string path = token.substr(token.find('=') + 2);
+                    path.pop_back();                           // Remove the trailing double quote
+                    return fs::path(homeDir) / path.substr(6); // Remove "$HOME/"
+                }
+            }
+        }
+    }
+    return defaultPath;
+}
+
+std::vector<QString> FileSystem::getCommonUserFolders()
+{
+    std::vector<QString> folders;
+
+    const char *homeDir = std::getenv("HOME");
+    if (homeDir)
+    {
+        folders.push_back(QString::fromStdString(getXDGUserDir("XDG_DESKTOP_DIR", fs::path(homeDir) / "Desktop")));
+        folders.push_back(QString::fromStdString(getXDGUserDir("XDG_DOCUMENTS_DIR", fs::path(homeDir) / "Documents")));
+        folders.push_back(QString::fromStdString(getXDGUserDir("XDG_DOWNLOAD_DIR", fs::path(homeDir) / "Downloads")));
+        folders.push_back(QString::fromStdString(getXDGUserDir("XDG_PICTURES_DIR", fs::path(homeDir) / "Pictures")));
+        folders.push_back(QString::fromStdString(getXDGUserDir("XDG_MUSIC_DIR", fs::path(homeDir) / "Music")));
+        folders.push_back(QString::fromStdString(getXDGUserDir("XDG_VIDEOS_DIR", fs::path(homeDir) / "Videos")));
+    }
+
+    return folders;
 }

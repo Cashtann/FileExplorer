@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
 import fs.controllers.FilesController
+import fs.controllers.ShortcutsController
 import FileExplorer
 
 Window {
@@ -32,15 +33,51 @@ Window {
             anchors.fill: parent
             color: "#282828"
 
+            Item {
+                id: shortcutInfoPanel
 
-            ShortcutButton {
-                text: "Folder dupa kupa abcdefghijklmnop"
-                width: parent.width - 10
-                height: 40
+                height: 50
                 anchors {
                     left: parent.left
                     right: parent.right
-                    margins: 5
+                    top: parent.top
+                }
+
+                Text {
+                    id: shortcutInfoPanelText
+
+                    color: "#ffffff"
+                    font.pointSize: 14
+                    font.bold: true
+                    elide: Text.ElideRight
+                    text: "Quick Access"
+                    verticalAlignment: Text.AlignVCenter
+                    horizontalAlignment: Text.AlignHCenter
+                    anchors {
+                        left: parent.left
+                        right: parent.right
+                        top: parent.top
+                        bottom: parent.bottom
+                        leftMargin: 20
+                        rightMargin: 20
+                        topMargin: 5
+                        bottomMargin: 5
+                    }
+                }
+            }
+
+            ShortcutsPanel {
+                id: shortcutsPanel
+
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    top: shortcutInfoPanel.bottom
+                    bottom: parent.bottom
+                    leftMargin: 20
+                    rightMargin: 20
+                    topMargin: 0
+                    bottomMargin: 0
                 }
             }
         }
@@ -126,6 +163,7 @@ Window {
                     color: "#ffffff"
                     font.pointSize: 12
                     width: parent.width - 20
+                    font.bold: true
                     elide: Text.ElideLeft
                     verticalAlignment: Text.AlignVCenter
 
@@ -163,6 +201,4 @@ Window {
             }
         }
     }
-
-
 }

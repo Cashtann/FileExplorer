@@ -19,7 +19,7 @@ Window {
     color: "#181818"
     //color: "#282828"
 
-    signal searchSubmitted
+    signal searchSubmitted(string name, string path)
     signal searchBarOutOfFocus
 
     Item {
@@ -194,8 +194,14 @@ Window {
                         verticalCenter: parent.verticalCenter
                     }
 
+                    onActiveFocusChanged: {
+                        if (activeFocus) {
+                            pathText.selectAll()
+                        }
+                    }
+
                     onAccepted: {
-                        searchSubmitted()
+                        searchSubmitted(text, FilesController.currentDirectory)
                     }
                     Keys.onPressed: (event)=> {
                         if (event.key === Qt.Key_Escape)
@@ -231,7 +237,10 @@ Window {
     }
     onSearchSubmitted: {
         searchBarOutOfFocus()
-        console.log(pathText.text)
+        console.log(path)
+        console.log(name)
+
+        FilesController.wipeAllPathItems()
     }
 
     onSearchBarOutOfFocus: {

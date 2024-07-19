@@ -26,7 +26,7 @@ Controller.prototype.TargetDirectoryPageCallback = function() {
 Controller.prototype.ComponentSelectionPageCallback = function() {
     var widget = gui.currentPageWidget();
     widget.deselectAll();
-    widget.selectComponent("qt.qt6." + installer.value("Version").replace(/\./g, "_") + ".gcc_64");
+    widget.selectComponent("qt.qt6.640.gcc_64"); // Selects Qt 6.4.0 gcc_64 component
     gui.clickButton(buttons.NextButton);
 }
 

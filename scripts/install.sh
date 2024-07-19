@@ -11,14 +11,17 @@ sudo apt-get install -y build-essential cmake wget
 # Set Qt version and installation directory
 QT_VERSION=6.4.0
 QT_INSTALL_DIR=$HOME/Qt
+QT_INSTALLER=qt-unified-linux-x64-online.run
 
 # Download and install Qt if not already installed
 if [ ! -d "$QT_INSTALL_DIR/$QT_VERSION" ]; then
-    echo "Downloading and installing Qt $QT_VERSION..."
-    wget https://download.qt.io/official_releases/qt/${QT_VERSION%.*}/$QT_VERSION/qt-opensource-linux-x64-$QT_VERSION.run
-    chmod +x qt-opensource-linux-x64-$QT_VERSION.run
-    ./qt-opensource-linux-x64-$QT_VERSION.run --script qt-noninteractive.qs
-    rm qt-opensource-linux-x64-$QT_VERSION.run
+    echo "Downloading Qt Online Installer..."
+    wget https://download.qt.io/official_releases/online_installers/$QT_INSTALLER
+    chmod +x $QT_INSTALLER
+
+    echo "Running Qt Online Installer in non-interactive mode..."
+    ./qt-unified-linux-x64-online.run --script qt-noninteractive.qs
+    rm qt-unified-linux-x64-online.run
 fi
 
 # Set Qt environment variables
@@ -26,7 +29,6 @@ export PATH=$QT_INSTALL_DIR/$QT_VERSION/gcc_64/bin:$PATH
 export CMAKE_PREFIX_PATH=$QT_INSTALL_DIR/$QT_VERSION/gcc_64
 
 # Create build directory
-cd FileExplorer
 mkdir -p build
 cd build
 

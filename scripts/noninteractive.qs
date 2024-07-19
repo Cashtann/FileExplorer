@@ -18,7 +18,7 @@ Controller.prototype.IntroductionPageCallback = function() {
 Controller.prototype.TargetDirectoryPageCallback = function() {
     var widget = gui.currentPageWidget();
     if (widget != null) {
-        widget.TargetDirectoryLineEdit.setText(installer.value("HomeDir") + "/Qt");
+        widget.TargetDirectoryLineEdit.setText(installer.value("HomeDir") + "/Qt/" + installer.value("Version"));
     }
     gui.clickButton(buttons.NextButton);
 }
@@ -26,7 +26,7 @@ Controller.prototype.TargetDirectoryPageCallback = function() {
 Controller.prototype.ComponentSelectionPageCallback = function() {
     var widget = gui.currentPageWidget();
     widget.deselectAll();
-    widget.selectComponent("qt.qt6.640.gcc_64"); // Selects Qt 6.4.0 gcc_64 component
+    widget.selectComponent("qt.qt6.640.gcc_64");
     gui.clickButton(buttons.NextButton);
 }
 

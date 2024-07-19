@@ -1,0 +1,20 @@
+<RCC>
+  <qresource prefix="/FileExplorer/">
+    <file alias="Main.qml">/home/cashtan/QtProjects/QMLFileExplorer/FileExplorer/Main.qml</file>
+    <file alias="ShortcutButton.qml">/home/cashtan/QtProjects/QMLFileExplorer/FileExplorer/ShortcutButton.qml</file>
+    <file alias="ImageButton.qml">/home/cashtan/QtProjects/QMLFileExplorer/FileExplorer/ImageButton.qml</file>
+    <file alias="FilesPanel.qml">/home/cashtan/QtProjects/QMLFileExplorer/FileExplorer/FilesPanel.qml</file>
+    <file alias="ShortcutsPanel.qml">/home/cashtan/QtProjects/QMLFileExplorer/FileExplorer/ShortcutsPanel.qml</file>
+    <file alias="assets/icons/app_generic.png">/home/cashtan/QtProjects/QMLFileExplorer/FileExplorer/assets/icons/app_generic.png</file>
+    <file alias="assets/icons/folder_generic.png">/home/cashtan/QtProjects/QMLFileExplorer/FileExplorer/assets/icons/folder_generic.png</file>
+    <file alias="assets/icons/error.png">/home/cashtan/QtProjects/QMLFileExplorer/FileExplorer/assets/icons/error.png</file>
+    <file alias="assets/icons/back_symbol.png">/home/cashtan/QtProjects/QMLFileExplorer/FileExplorer/assets/icons/back_symbol.png</file>
+    <file alias="assets/icons/next_symbol.png">/home/cashtan/QtProjects/QMLFileExplorer/FileExplorer/assets/icons/next_symbol.png</file>
+    <file alias="assets/icons/go_previous.png">/home/cashtan/QtProjects/QMLFileExplorer/FileExplorer/assets/icons/go_previous.png</file>
+    <file alias="assets/icons/refresh.png">/home/cashtan/QtProjects/QMLFileExplorer/FileExplorer/assets/icons/refresh.png</file>
+    <file alias="assets/icons/search.png">/home/cashtan/QtProjects/QMLFileExplorer/FileExplorer/assets/icons/search.png</file>
+    <file alias="assets/icons/cpp.png">/home/cashtan/QtProjects/QMLFileExplorer/FileExplorer/assets/icons/cpp.png</file>
+    <file alias="assets/icons/hpp.png">/home/cashtan/QtProjects/QMLFileExplorer/FileExplorer/assets/icons/hpp.png</file>
+  </qresource>
+</RCC>
+

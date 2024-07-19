@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/FileExplorer">
+    <file alias="qmldir">/home/cashtan/QtProjects/QMLFileExplorer/FileExplorer/FileExplorer/qmldir</file>
+  </qresource>
+</RCC>
+

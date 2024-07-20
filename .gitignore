@@ -1,2 +1,2 @@
-build*
+FileExplorer/build*
 CMakeLists.txt.user

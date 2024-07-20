@@ -11,8 +11,11 @@ e.g. `cmake -B build -DCMAKE_PREFIX_PATH=/home/cashtan/Qt/6.5.3/gcc_64`.
 
 After you've done that, just type in terminal: 
 To configure CMake: 
+
 ```sh config_cmake.sh```
+
 To build and run: 
+
 ```sh build.sh```
 
 

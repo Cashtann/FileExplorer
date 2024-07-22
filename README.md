@@ -2,8 +2,8 @@
 
 ### About
 
-Qt QML 6.5.3 and C++ 17 File Explorer, basic program
-This is my project for learning, nothing crazy
+Qt QML 6.5.3 and C++ 17 File Explorer, basic program.
+This is my project for learning, nothing crazy.
 
 ### Build and run
 

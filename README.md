@@ -5,6 +5,8 @@
 Qt QML 6.5.3 and C++ 17 File Explorer, basic program.
 This is my project for learning, nothing crazy.
 
+All icons are Ubuntu GNOME icons.
+
 ### Build and run
 
 For building I am using **CMake**. 

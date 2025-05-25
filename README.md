@@ -1,9 +1,16 @@
 # Qt QML and C++ File Explorer
 
+![preview](./preview.png)
+
 ### About
 
-Qt QML 6.5.3 and C++ 17 File Explorer, basic program.
-This is my project for learning, nothing crazy.
+Qt QML 6.5.3 and C++ 17 File Explorer, simple program.
+Allows to navigate freely through filesystem (on Linux). 
+Contains quick-access directories on the bar to the left.
+
+### Note
+Some features may lack in performance (looking at you, search bar).
+Made as a learning project in preparation for Hachathon.
 
 All icons are Ubuntu GNOME icons.
 
@@ -25,7 +32,5 @@ To build and run:
 ```
 sh build.sh
 ```
-
-
-### Preview image
-![preview](./preview.png)
+### Alternative way to build/run
+I used QtStudio
